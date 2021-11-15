@@ -21,20 +21,20 @@ tableData.forEach(function(d) {
 
 ///SETUP FILTERS/// 
 
-//SETUP BUTTON
+//SETUP BUTTON, retrieve inputed date and filter the table based on it
 var button=d3.select("#filter-btn");
 var search=d3.select("#datetime")
-function filterFunction()
+function filterdata()
     {
       console.log("filter button clicked")
       var nextDate = search.property("value");
       console.log(nextDate);
-      var newtableData=tableData.filter(t=>t.datetime==nextDate);
+      var tabledatanew=tableData.filter(t=>t.datetime==nextDate);
       let tablebody = d3.select("tbody");
       tablebody.html("");
-      newtableData.forEach(function(d1) {
+      tabledatanew.forEach(function(d1) {
         console.log(d1);
-        
+        ///loop through each row and append table
         var row = tablebody.append("tr");
           Object.entries(d1).forEach(function([key, value]) {
 
@@ -43,4 +43,4 @@ function filterFunction()
                 });
               });
     }
-button.on("click",filterFunction);
+button.on("click",filterdata);
